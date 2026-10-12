@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripNova</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.2/dist/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="page-bg">
+        <div class="gradient-circle circle-1"></div>
+        <div class="gradient-circle circle-2"></div>
+        <div class="gradient-circle circle-3"></div>
+    </div>
+
+    <div class="app-container">
+        <header class="hero-section">
+            <div class="badge">AI travel planner</div>
+            <h1>TripNova</h1>
+            <p>Describe a trip. The app looks up flights and hotels, then writes a practical itinerary you can copy or download.</p>
+        </header>
+
+        <section class="planner-card">
+            <div class="card-header">
+                <div>
+                    <h2>Plan a trip</h2>
+                    <p>Include origin, destination, dates, and budget if you have them.</p>
+                </div>
+                <div class="status-pill">
+                    <span class="status-dot"></span>
+                    Ready
+                </div>
+            </div>
+
+            <div class="input-area">
+                <textarea
+                    id="userInput"
+                    placeholder="Example: Plan a 5-day trip to Kyoto from Dhaka in November, mid-range budget."
+                ></textarea>
+                <button type="button" id="sendBtn" onclick="sendMessage()">
+                    <span id="btnText">Plan trip</span>
+                    <span id="btnLoader" class="hidden"><span class="loader"></span></span>
+                </button>
+            </div>
+
+            <div class="quick-prompts">
+                <button type="button" onclick="setPrompt('Plan a 4 day trip to Japan from Bangladesh')">Japan, 4 days</button>
+                <button type="button" onclick="setPrompt('Weekend trip to Singapore from Dhaka, 2 people, hotels near the city center')">Singapore weekend</button>
+                <button type="button" onclick="setPrompt('7 day family trip to Thailand from Bangladesh, beaches and one city stop')">Thailand, 7 days</button>
+            </div>
+
+            <div id="errorBox" class="error-box hidden"></div>
+        </section>
+
+        <section id="resultSection" class="result-section hidden">
+            <div class="result-header">
+                <div>
+                    <h2>Travel plan</h2>
+                    <p id="threadInfo"></p>
+                </div>
+                <div class="result-actions">
+                    <button type="button" class="copy-btn" onclick="copyResult()">Copy</button>
+                    <button type="button" class="download-btn" onclick="downloadPDF()">Download PDF</button>
+                </div>
+            </div>
+
+            <div id="pdfContent" class="pdf-content">
+                <h2 class="pdf-title">TripNova Travel Plan</h2>
+                <div id="resultBox" class="result-box"></div>
+            </div>
+        </section>
+    </div>
+
+    <footer>TripNova · flights, hotels, and a day-by-day itinerary</footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
