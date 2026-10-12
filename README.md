@@ -72,9 +72,6 @@ Web app:
 python app.py
 ```
 
-Open http://127.0.0.1:8000
-
-Health check: http://127.0.0.1:8000/health
 
 Command line:
 
